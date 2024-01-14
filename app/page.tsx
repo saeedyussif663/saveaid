@@ -1,7 +1,13 @@
+import About from "@/Components/About";
+import Landing from "@/Components/Landing";
+import Navbar from "@/Components/Navbar";
+
 export default function Home() {
   return (
-    <main>
-      <h1 className="text-2xl text-blue-500">hello save aid</h1>
+    <main className="max-w-[65rem] mx-auto">
+      <Navbar />
+      <Landing />
+      <About />
     </main>
   );
 }
