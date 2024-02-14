@@ -3,19 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.jpg";
 import { useState } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+import { IoMdMenu, IoMdClose } from "react-icons/io";
+import { IoIosMenu } from "react-icons/io";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="flex w-[90%] md:w-full md:px-6 mx-auto my-3 md:my-6 justify-between items-center text-md">
-      <div
-        className="block z-50 md:hidden border border-gray-200 rounded-md"
+    <div className="flex w-[90%] md:w-full md:px-6 mx-auto md:my-6 justify-between items-center text-md">
+      <IoIosMenu
+        className="block md:hidden text-3xl my-3 relative -top-[6px] border border-gray-200 rounded-md"
         onClick={() => setIsOpen(true)}
-      >
-        <MenuIcon fontSize="large" />
-      </div>
+      />
 
       <nav
         className={`h-screen md:h-auto ${
@@ -26,7 +25,7 @@ export default function Navbar() {
           className="relative left-[90%] top-6 cursor-pointer md:hidden"
           onClick={() => setIsOpen(false)}
         >
-          <CloseIcon />
+          <IoMdClose />
         </div>
         <div className="w-[36px] h-[36px] mt-6 md:mt-0 flex flex-col justify-center items-center rounded-full bg-gradient-to-l from-blue-700 to-yellow-500">
           <Link href="/" className="">
@@ -59,12 +58,18 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:bg-gray-200 py-1 px-2 rounded-md">
+              <a
+                href="#projects"
+                className="hover:bg-gray-200 py-1 px-2 rounded-md"
+              >
                 Projects
               </a>
             </li>
             <li>
-              <a href="#" className="hover:bg-gray-200 py-1 px-2 rounded-md">
+              <a
+                href="#contact"
+                className="hover:bg-gray-200 py-1 px-2 rounded-md"
+              >
                 Contact
               </a>
             </li>

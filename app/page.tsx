@@ -1,6 +1,8 @@
 import About from "@/components/About";
+import Contact from "@/components/Contact";
 import Landing from "@/components/Landing";
 import Navbar from "@/components/Navbar";
+import { Projects } from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
       <Navbar />
       <Landing />
       <About />
+      <Projects />
+      <Contact />
     </main>
   );
 }
