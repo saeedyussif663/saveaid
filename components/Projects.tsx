@@ -1,9 +1,14 @@
 import Image from "next/image";
 import image from "@/assets/mosque.jpeg";
-import { API_URL } from "@/constant";
+
+// import dynamic from "next/dynamic";
+
+// const DynamicPage = dynamic(() => import(""));
 
 export async function Projects() {
-  const response = await fetch(`${API_URL}/upcomingProjects/api`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/upcomingProjects/api`
+  );
   const projects: [] = await response.json();
 
   return (
