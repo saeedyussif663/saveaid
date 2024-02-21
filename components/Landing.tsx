@@ -21,7 +21,7 @@ export default function Landing() {
         </p>
         <Link
           href="#about"
-          className="bg-blue-500 text-white w-max mt-6 px-3 py-2 rounded-md hover:bg-blue-900 transition-all duration-500"
+          className="bg-blue-400 text-white w-max mt-6 px-3 py-2 rounded-md hover:bg-blue-500 transition-all duration-500"
         >
           Learn More
         </Link>

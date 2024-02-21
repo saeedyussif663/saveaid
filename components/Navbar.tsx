@@ -84,7 +84,10 @@ export default function Navbar() {
         >
           Sign In
         </a>
-        <a href="#" className="bg-black text-white py-1 px-2 rounded-md">
+        <a
+          href="#"
+          className="bg-blue-400 hover:bg-blue-500 text-white py-1 px-2 rounded-md"
+        >
           Sign Up
         </a>
       </div>
