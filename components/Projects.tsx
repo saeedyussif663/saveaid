@@ -2,7 +2,7 @@ import Image from "next/image";
 import image from "@/assets/mosque.jpeg";
 
 export async function Projects() {
-  const response = await fetch("http://localhost:3000/upcomingProjects/api");
+  const response = await fetch("upcomingProjects/api");
   const projects: [] = await response.json();
 
   return (
