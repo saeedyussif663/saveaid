@@ -1,15 +1,16 @@
+"use client";
 import Image from "next/image";
 import image from "@/assets/mosque.jpeg";
+import { useState, useEffect } from "react";
+import { fetchUpcomingProject } from "@/lib/fetchUpcomingProjects";
 
-// import dynamic from "next/dynamic";
-
-// const DynamicPage = dynamic(() => import(""));
-
-export async function Projects() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/upcomingProjects/api`
-  );
-  const projects: [] = await response.json();
+export function Projects() {
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    fetchUpcomingProject()
+      .then((response) => setProjects(response))
+      .catch((error) => console.log(error));
+  }, [projects]);
 
   return (
     <section
