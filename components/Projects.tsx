@@ -1,16 +1,9 @@
-"use client";
 import Image from "next/image";
 import image from "@/assets/mosque.jpeg";
-import { useState, useEffect } from "react";
 import { fetchUpcomingProject } from "@/lib/fetchUpcomingProjects";
 
-export function Projects() {
-  const [projects, setProjects] = useState([]);
-  useEffect(() => {
-    fetchUpcomingProject()
-      .then((response) => setProjects(response))
-      .catch((error) => console.log(error));
-  }, [projects]);
+export async function Projects() {
+  const projects: [] = await fetchUpcomingProject();
 
   return (
     <section
@@ -53,7 +46,7 @@ export function Projects() {
         })}
       </div>
       <div className="flex justify-center mt-4 ">
-        <button className="bg-blue-400 hover:bg-blue-500 transition-all text-white rounded-md cursor-pointer px-3 py-1">
+        <button className="bg-[#2185d0] hover:bg-blue-600 transition-all text-white rounded-md cursor-pointer px-3 py-1">
           See more...
         </button>
       </div>

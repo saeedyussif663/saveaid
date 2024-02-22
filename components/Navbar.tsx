@@ -78,15 +78,15 @@ export default function Navbar() {
       </nav>
 
       <div className="flex gap-5 items-center">
-        <a
-          href="#"
-          className="border border-gray-200 py-1 px-2 rounded-md hover:bg-gray-200"
+        <Link
+          href="/signin"
+          className="border border-blue-400 py-1 px-2 rounded-md hover:bg-gray-200"
         >
           Sign In
-        </a>
+        </Link>
         <a
           href="#"
-          className="bg-blue-400 hover:bg-blue-500 text-white py-1 px-2 rounded-md"
+          className="bg-[#2185d0] hover:bg-blue-600 text-white py-1 px-2 rounded-md"
         >
           Sign Up
         </a>

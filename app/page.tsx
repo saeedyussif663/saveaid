@@ -3,8 +3,6 @@ import Contact from "@/components/Contact";
 import Landing from "@/components/Landing";
 import Navbar from "@/components/Navbar";
 import { Projects } from "@/components/Projects";
-import { Suspense } from "react";
-import Loader from "./loading";
 
 export default function Home() {
   return (
@@ -12,9 +10,7 @@ export default function Home() {
       <Navbar />
       <Landing />
       <About />
-      <Suspense fallback={<Loader />}>
-        <Projects />
-      </Suspense>
+      <Projects />
 
       <Contact />
     </main>

@@ -6,6 +6,6 @@ export async function fetchUpcomingProject() {
     const data = await response.json();
     return data;
   } catch (error) {
-    return error;
+    return { ok: false, message: "Error fetching data" };
   }
 }
