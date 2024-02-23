@@ -10,16 +10,18 @@ interface UserDetails {
 }
 
 export default function Signin() {
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const userDetails: UserDetails = {
-      username: usernameRef.current.value,
-      password: passwordRef.current.value,
-    };
-    console.log(userDetails);
+    if (usernameRef.current && passwordRef.current) {
+      const userDetails: UserDetails = {
+        username: usernameRef.current.value,
+        password: passwordRef.current.value,
+      };
+      console.log(userDetails);
+    }
   }
 
   return (
