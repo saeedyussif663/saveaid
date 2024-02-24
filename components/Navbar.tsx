@@ -84,12 +84,12 @@ export default function Navbar() {
         >
           Sign In
         </Link>
-        <a
-          href="#"
+        <Link
+          href="/signup"
           className="bg-[#2185d0] hover:bg-blue-600 text-white py-1 px-2 rounded-md"
         >
           Sign Up
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FormEvent, useRef } from "react";
 
 import logo from "../assets/logo.jpg";
+import Link from "next/link";
 
 interface UserDetails {
   username: string;
@@ -26,7 +27,7 @@ export default function Signin() {
 
   return (
     <div className="max-w-[44rem] mx-auto mt-24 md:mt-10">
-      <div className="flex min-h-full w-[95%] rounded-xl mx-auto md:w-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-neutral-100">
+      <div className="flex min-h-full w-[95%] rounded-xl md:rounded-2xl mx-auto md:w-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-neutral-100">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             className="mx-auto rounded-xl"
@@ -96,12 +97,12 @@ export default function Signin() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            <Link
+              href="/signup"
+              className="font-semibold leading-6 text-blue-500 hover:text-blue-600"
             >
               Sing Up to contribute
-            </a>
+            </Link>
           </p>
         </div>
       </div>
