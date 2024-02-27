@@ -3,17 +3,22 @@
 import Image from "next/image";
 import logo from "../assets/logo.jpg";
 import Link from "next/link";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { createUser } from "@/lib/singup";
+import { useRouter } from "next/navigation";
 
 export default function Signup() {
+  const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPasswordName] = useState("");
+  const [err, setErr] = useState({ isError: false, message: "" });
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+
     const user = {
       firstName,
       lastName,
@@ -21,16 +26,23 @@ export default function Signup() {
       email,
       password,
     };
-    console.log(user);
 
-    /* CREATE USER HERE */
-
-    setFirstName("");
-    setLastName("");
-    setUsername("");
-    setEmail("");
-    setPasswordName("");
+    const res = await createUser(user);
+    if (!res.ok) {
+      setErr({ isError: true, message: res.message });
+      setTimeout(() => {
+        setErr({ isError: false, message: "" });
+      }, 3000);
+    } else {
+      router.push("/signin");
+      setFirstName("");
+      setLastName("");
+      setUsername("");
+      setEmail("");
+      setPasswordName("");
+    }
   }
+
   return (
     <div className="max-w-[55rem] mx-auto my-4 md:mt-6">
       <div className="flex min-h-full w-[95%] rounded-xl md:rounded-3xl mx-auto md:w-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-neutral-100">
@@ -49,7 +61,7 @@ export default function Signup() {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="flex justify-between md:gap-[2%] flex-col md:flex-row">
-              <div className="w-[49%]">
+              <div className="md:w-[49%] w-full">
                 <label
                   htmlFor="firstname"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -68,7 +80,7 @@ export default function Signup() {
                   />
                 </div>
               </div>
-              <div className="w-[49%]">
+              <div className="md:w-[49%] w-full mt-2 md:mt-0">
                 <label
                   htmlFor="lastname"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -143,6 +155,7 @@ export default function Signup() {
                   id="password"
                   name="password"
                   type="password"
+                  autoComplete="on"
                   required
                   value={password}
                   onChange={(e) => setPasswordName(e.target.value)}
@@ -158,7 +171,9 @@ export default function Signup() {
               >
                 Sign up
               </button>
-              <p className="mt-4 hidden">Error message</p>
+              {err.isError && (
+                <p className="mt-4 text-red-500">{err.message}</p>
+              )}
             </div>
           </form>
 
